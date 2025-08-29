@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cordyceps militaris — Substrate Design & Preparation (High‑Level)</title>
+  <style>
+    /* Styling aligned with your earlier light theme */
+    body{font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:#f9f9f9;color:#333;margin:0}
+    header{background:#2c3e50;color:#fff;padding:22px 16px;text-align:center}
+    h1,h2,h3{color:#2c3e50}
+    main{max-width:1000px;margin:0 auto;padding:20px}
+    section{background:#fff;border-radius:8px;box-shadow:0 2px 5px rgba(0,0,0,.08);padding:20px;margin:12px 0}
+    .muted{color:#556}
+    ul{margin:8px 0 8px 22px}
+    .callout{background:#eaf2f8;border-left:6px solid #2980b9;padding:12px;border-radius:6px}
+    .warn{background:#fff7e6;border-left-color:#f39c12}
+    .danger{background:#fdecea;border-left-color:#e74c3c}
+    .grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    table{width:100%;border-collapse:collapse;margin-top:8px}
+    th,td{border-bottom:1px solid #e6e6e6;padding:8px;text-align:left;vertical-align:top}
+    th{background:#f2f6fa}
+    code,kbd{font-family:ui-monospace,Consolas,Menlo,monospace}
+    .pill{display:inline-block;padding:2px 8px;border-radius:999px;background:#eef6ff;color:#1b4f72;border:1px solid #d6e9ff;font-size:.8rem}
+    .flex{display:flex;gap:8px;flex-wrap:wrap}
+    .small{font-size:.92rem}
+    footer{padding:24px;text-align:center;color:#666}
+    .btnbar{display:flex;gap:8px;justify-content:flex-end}
+    button{background:#2c3e50;color:#fff;border:none;border-radius:8px;padding:10px 14px;cursor:pointer}
+    button:hover{filter:brightness(1.1)}
+    @media print{header, .btnbar{display:none} body{background:#fff}}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Cordyceps <em>militaris</em> — Substrate Design & Preparation</h1>
+    <p class="muted">High‑level, non‑actionable reference: concepts, options, design rationales, risk controls.</p>
+  </header>
+
+  <main>
+    <div class="btnbar">
+      <button onclick="window.print()">🖨️ Print / Save as PDF</button>
+    </div>
+
+    <section>
+      <h2>Scope & Safety</h2>
+      <div class="callout warn small">
+        This document provides <strong>conceptual guidance only</strong>. It intentionally omits step‑by‑step procedures, quantities, temperatures, times, pH, or equipment settings for culturing. For practical work, use institutionally approved SOPs and hands‑on training.
+      </div>
+      <ul>
+        <li><strong>Audience:</strong> Readers seeking to understand <em>what</em> goes into a substrate and <em>why</em>, without operational parameters.</li>
+        <li><strong>Not included:</strong> Recipes, inoculation instructions, sterilization cycles, or other procedural details.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Design Goals for Substrates</h2>
+      <ul>
+        <li>Provide an energy source and structural matrix compatible with <em>C. militaris</em> morphogenesis.</li>
+        <li>Balance carbon and nitrogen so growth and secondary metabolism can occur in distinct phases if desired.</li>
+        <li>Supply trace minerals and vitamins that resemble insect host availability.</li>
+        <li>Maintain water activity and porosity that support gas exchange without waterlogging.</li>
+        <li>Be reproducible, low in contaminants, and compatible with your containment and waste streams.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Component Roles</h2>
+      <div class="grid">
+        <section>
+          <h3>Carbohydrate Matrix</h3>
+          <p>Grain starches or polymeric carbohydrates provide sustained carbon release and structure. Choice affects texture, porosity, and nutrient diffusion.</p>
+        </section>
+        <section>
+          <h3>Nitrogen Sources</h3>
+          <p>Protein hydrolysates, amino acid mixes, or yeast‑derived materials supply amino nitrogen supporting enzyme and nucleic acid synthesis.</p>
+        </section>
+        <section>
+          <h3>Lipids & Sterols</h3>
+          <p>Neutral oils or sterol precursors support membrane integrity and can influence sporulation and pigment formation.</p>
+        </section>
+        <section>
+          <h3>Chitinous/Fibrous Analogs</h3>
+          <p>Inert fibers or chitin analogs emulate insect exoskeleton cues, modulating enzyme expression and scaffolding.</p>
+        </section>
+        <section>
+          <h3>Minerals & Electrolytes</h3>
+          <p>Balanced macro/trace elements (e.g., K, Mg, Ca, Fe, Zn, Mn, Cu, Se) act as enzyme cofactors and osmotic regulators.</p>
+        </section>
+        <section>
+          <h3>Vitamins & Cofactors</h3>
+          <p>B‑group vitamins and biotin are commonly useful for fungal metabolism; source from consistent, food‑grade suppliers.</p>
+        </section>
+        <section>
+          <h3>Structuring/Gelling Agents</h3>
+          <p>Gel matrices or binders alter mechanical stability, water retention, and surface topography for fruiting.</p>
+        </section>
+        <section>
+          <h3>Moisture & Buffering</h3>
+          <p>Water quality and buffering agents influence water activity and pH stability; both affect enzyme function and metabolite profiles.</p>
+        </section>
+      </div>
+    </section>
+
+    <section>
+      <h2>Substrate Archetypes (Conceptual)</h2>
+      <table>
+        <thead>
+          <tr><th>Archetype</th><th>Concept</th><th>Advantages</th><th>Trade‑offs</th><th>Use Orientation</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Grain‑Based Solid</td>
+            <td>Starch matrix with supplemental nitrogen/minerals.</td>
+            <td>Good structure; widely available; scalable.</td>
+            <td>Batch variability; careful moisture management needed.</td>
+            <td>General fruiting, visuals.</td>
+          </tr>
+          <tr>
+            <td>Gel‑Supported (Rice/Agar‑like)</td>
+            <td>Cooked cereal matrix set with a gentle gelling agent.</td>
+            <td>Smooth surface, predictable diffusion.</td>
+            <td>Requires consistent gel strength; dehydration risk at edges.</td>
+            <td>Controlled studies, uniformity.</td>
+          </tr>
+          <tr>
+            <td>Insect‑Mimic Composite</td>
+            <td>Carbohydrate + protein hydrolysate + lipid + mineral profile mimicking insect pupae.</td>
+            <td>Aligns with natural ecology; can bias secondary metabolites.</td>
+            <td>More inputs to qualify; allergen considerations.</td>
+            <td>Bioactive‑oriented programs.</td>
+          </tr>
+          <tr>
+            <td>Defined Minimal</td>
+            <td>Simplified carbon + inorganic nitrogen + vitamins + minerals.</td>
+            <td>High reproducibility; mechanistic insights.</td>
+            <td>May not support robust morphogenesis without tuning.</td>
+            <td>Research controls, QA benchmarking.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Conceptual Process Phases (Non‑procedural)</h2>
+      <ol>
+        <li><strong>Formulate</strong> — Choose an archetype and define component classes and quality specs (no quantities here).</li>
+        <li><strong>Condition</strong> — Plan how the matrix will be hydrated, structured, and buffered to achieve target texture and porosity (no times/temps).</li>
+        <li><strong>Stability & Safety</strong> — Ensure all materials and packaging are compatible with your approved sterilization/sanitation approach (no cycle parameters).</li>
+        <li><strong>Verification</strong> — Specify incoming‑material checks, visual criteria, and documentation standards.</li>
+        <li><strong>Lifecycle</strong> — Anticipate how nutrition availability should evolve from early growth to fruiting (e.g., staged nutrition conceptually).</li>
+      </ol>
+      <div class="callout small">Each phase should be paired with institutionally approved SOPs before any practical work.</div>
+    </section>
+
+    <section>
+      <h2>Advanced Design Concepts (High‑Level)</h2>
+      <div class="grid">
+        <section>
+          <h3>Staged Nutrition</h3>
+          <p>Separate an early growth‑supportive matrix from a later phase that conceptually favors secondary metabolism (e.g., pigment or nucleoside profiles).</p>
+        </section>
+        <section>
+          <h3>Immobilized Scaffolds</h3>
+          <p>Introduce inert carriers to stabilize morphology and create micro‑channels for gas diffusion; can simplify downstream harvesting of exudates.</p>
+        </section>
+        <section>
+          <h3>Gas‑Exchange Strategy</h3>
+          <p>Use breathable barriers or structured headspace planning to balance CO₂ removal with contamination barriers, aligned with your containment level.</p>
+        </section>
+        <section>
+          <h3>Light‑Responsive Surfaces</h3>
+          <p>Consider surface geometry and translucency to support photomorphogenic cues without creating hot spots or desiccation zones.</p>
+        </section>
+        <section>
+          <h3>Matrix Rheology</h3>
+          <p>Tune firmness and elasticity conceptually so the substrate resists collapse yet allows hyphal penetration and moisture movement.</p>
+        </section>
+        <section>
+          <h3>Leachables/Extractables Control</h3>
+          <p>Audit containers and liners for plasticizers or metals that could affect growth or analytics; prefer food/pharma contact materials.</p>
+        </section>
+      </div>
+    </section>
+
+    <section>
+      <h2>Material Qualification (Non‑biological)</h2>
+      <ul>
+        <li>Supplier certificates and lot traceability for each input.</li>
+        <li>Screen grains or plant materials for mycotoxins and heavy metals per local standards.</li>
+        <li>Document moisture content ranges provided by supplier (no in‑house targets listed here).</li>
+        <li>Maintain a change‑control log when substituting brands or sources.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Risk Controls & Precautions</h2>
+      <div class="callout danger small"><strong>No operational steps are provided.</strong> Apply your lab’s biosafety rules and approved SOPs at all times.</div>
+      <ul>
+        <li><strong>Allergens & Dust:</strong> Grain flours, chitinous materials, and spores can be allergenic—use appropriate PPE and engineering controls per policy.</li>
+        <li><strong>Chemical Additives:</strong> Vitamins, buffers, and trace salts may be irritants—consult SDS and segregate storage.</li>
+        <li><strong>Cross‑contamination:</strong> Dedicate tools and containers; implement unidirectional flow of materials.</li>
+        <li><strong>Waste:</strong> Treat substrate waste and disposables per local biosafety/environmental guidance.</li>
+        <li><strong>Labeling:</strong> Unique batch IDs, ingredient lots, and preparation dates aid traceability.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Troubleshooting (Conceptual)</h2>
+      <table>
+        <thead><tr><th>Observed Symptom</th><th>Think About</th></tr></thead>
+        <tbody>
+          <tr><td>Surface dries or crusts</td><td>Headspace humidity balance; matrix rheology; container ventilation strategy.</td></tr>
+          <tr><td>Excess free water</td><td>Water binding capacity of matrix; container geometry; condensation management.</td></tr>
+          <tr><td>Weak structure / collapse</td><td>Binder selection; compaction; mechanical stability of container.</td></tr>
+          <tr><td>Color development inconsistent</td><td>Light exposure uniformity; mineral profile consistency; substrate translucency.</td></tr>
+          <tr><td>Off‑odors or visual anomalies</td><td>Supply chain quality; packaging integrity; storage conditions of dry inputs.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Checklists (Non‑procedural)</h2>
+      <div class="grid">
+        <section>
+          <h3>Planning</h3>
+          <ul>
+            <li>Archetype chosen; objective stated (growth vs. study).</li>
+            <li>Inputs listed with supplier and lot numbers.</li>
+            <li>Compatibility with containment and waste streams confirmed.</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Materials</h3>
+          <ul>
+            <li>Containers and closures fit for purpose (food/pharma contact).</li>
+            <li>Breathable barrier strategy defined (if applicable).</li>
+            <li>Buffers, minerals, and vitamins sourced with SDS on file.</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Documentation</h3>
+          <ul>
+            <li>Batch ID schema defined; labels prepared.</li>
+            <li>Incoming QA records and storage conditions documented.</li>
+            <li>Deviation and change‑control forms ready.</li>
+          </ul>
+        </section>
+      </div>
+    </section>
+
+    <section>
+      <h2>What This Guide Won’t Do</h2>
+      <ul>
+        <li>Provide a recipe with amounts or ratios.</li>
+        <li>Specify hydration levels, pH, or conditioning temperatures/times.</li>
+        <li>Describe inoculation or incubation procedures.</li>
+        <li>Advise on environmental set‑points for growth or fruiting.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <small>Conceptual reference for substrate design only. Use accredited training and approved SOPs for any laboratory or production work.</small>
+  </footer>
+</body>
+</html>

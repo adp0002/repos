@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cordyceps Cultivation Calculators</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+    }
+    .sidebar {
+      width: 220px;
+      background: #2c3e50;
+      color: #fff;
+      height: 100vh;
+      padding-top: 20px;
+      position: fixed;
+    }
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .sidebar a {
+      display: block;
+      padding: 12px 20px;
+      color: #fff;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .sidebar a:hover {
+      background: #34495e;
+    }
+    .content {
+      margin-left: 220px;
+      padding: 20px;
+      width: calc(100% - 220px);
+    }
+    .section {
+      display: none;
+    }
+    .active {
+      display: block;
+    }
+    input, button {
+      padding: 8px;
+      margin: 5px 0;
+      width: 100%;
+    }
+    .result {
+      margin-top: 10px;
+      padding: 10px;
+      background: #ecf0f1;
+      border-radius: 5px;
+    }
+    canvas {
+      max-width: 600px;
+      margin-top: 20px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>CordyBot</h2>
+    <a href="#" onclick="showSection('capacity')">Capacity Calculator</a>
+    <a href="#" onclick="showSection('space')">Space Requirement</a>
+    <a href="#" onclick="showSection('raw')">Raw Products</a>
+    <a href="#" onclick="showSection('charts')">Charts Dashboard</a>
+  </div>
+
+  <div class="content">
+    <!-- Capacity Calculator -->
+    <div id="capacity" class="section active">
+      <h2>Cultivation Capacity Calculator</h2>
+      <label>Number of Jars:</label>
+      <input type="number" id="jars" value="50">
+      <label>Number of Bottles:</label>
+      <input type="number" id="bottles" value="30">
+      <label>Number of Bags:</label>
+      <input type="number" id="bags" value="20">
+      <button onclick="calcCapacity()">Calculate Capacity</button>
+      <div class="result" id="capacityResult"></div>
+    </div>
+
+    <!-- Space Requirement -->
+    <div id="space" class="section">
+      <h2>Space Requirement Calculator</h2>
+      <label>Rack Count:</label>
+      <input type="number" id="racks" value="5">
+      <label>Shelves per Rack:</label>
+      <input type="number" id="shelves" value="4">
+      <label>Area per Shelf (sq ft):</label>
+      <input type="number" id="area" value="6">
+      <button onclick="calcSpace()">Calculate Space</button>
+      <div class="result" id="spaceResult"></div>
+    </div>
+
+    <!-- Raw Products -->
+    <div id="raw" class="section">
+      <h2>Raw Products & Chemicals Calculator</h2>
+      <label>Batch Size (kg substrate):</label>
+      <input type="number" id="batch" value="10">
+      <button onclick="calcRaw()">Calculate Requirements</button>
+      <div class="result" id="rawResult"></div>
+    </div>
+
+    <!-- Charts Dashboard -->
+    <div id="charts" class="section">
+      <h2>Charts Dashboard</h2>
+      <canvas id="capacityChart"></canvas>
+      <canvas id="spaceChart"></canvas>
+      <canvas id="rawChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      if (id === 'charts') renderCharts();
+    }
+
+    // Global storage for results
+    let results = {
+      capacity: { jars: 0, bottles: 0, bags: 0 },
+      space: { total: 0, racks: 0, shelves: 0 },
+      raw: { rice: 0, glucose: 0, minerals: 0 }
+    };
+
+    // Chart instances
+    let capacityChart, spaceChart, rawChart;
+
+    function calcCapacity() {
+      let jars = +document.getElementById('jars').value;
+      let bottles = +document.getElementById('bottles').value;
+      let bags = +document.getElementById('bags').value;
+      let total = jars*0.25 + bottles*0.5 + bags*1; // liters approx
+
+      results.capacity = { jars, bottles, bags };
+      document.getElementById('capacityResult').innerText =
+        `Total capacity: ${total.toFixed(2)} L (Jars: ${jars}, Bottles: ${bottles}, Bags: ${bags})`;
+      renderCharts();
+    }
+
+    function calcSpace() {
+      let racks = +document.getElementById('racks').value;
+      let shelves = +document.getElementById('shelves').value;
+      let area = +document.getElementById('area').value;
+      let total = racks * shelves * area;
+
+      results.space = { total, racks, shelves };
+      document.getElementById('spaceResult').innerText =
+        `Total space: ${total} sq ft (Racks: ${racks}, Shelves: ${shelves} each, Area per shelf: ${area} sq ft)`;
+      renderCharts();
+    }
+
+    function calcRaw() {
+      let batch = +document.getElementById('batch').value;
+      let rice = batch * 0.7;
+      let glucose = batch * 0.2;
+      let minerals = batch * 0.1;
+
+      results.raw = { rice, glucose, minerals };
+      document.getElementById('rawResult').innerText =
+        `Rice: ${rice} kg, Glucose: ${glucose} kg, Minerals: ${minerals} kg`;
+      renderCharts();
+    }
+
+    function renderCharts() {
+      // Capacity Chart
+      const ctx1 = document.getElementById('capacityChart').getContext('2d');
+      if (capacityChart) capacityChart.destroy();
+      capacityChart = new Chart(ctx1, {
+        type: 'bar',
+        data: {
+          labels: ['Jars', 'Bottles', 'Bags'],
+          datasets: [{
+            label: 'Container Count',
+            data: [results.capacity.jars, results.capacity.bottles, results.capacity.bags],
+            backgroundColor: ['#3498db','#2ecc71','#e67e22']
+          }]
+        }
+      });
+
+      // Space Chart
+      const ctx2 = document.getElementById('spaceChart').getContext('2d');
+      if (spaceChart) spaceChart.destroy();
+      spaceChart = new Chart(ctx2, {
+        type: 'pie',
+        data: {
+          labels: ['Total Space'],
+          datasets: [{
+            label: 'Space',
+            data: [results.space.total],
+            backgroundColor: ['#9b59b6']
+          }]
+        }
+      });
+
+      // Raw Products Chart
+      const ctx3 = document.getElementById('rawChart').getContext('2d');
+      if (rawChart) rawChart.destroy();
+      rawChart = new Chart(ctx3, {
+        type: 'bar',
+        data: {
+          labels: ['Rice','Glucose','Minerals'],
+          datasets: [{
+            label: 'Raw Products (kg)',
+            data: [results.raw.rice, results.raw.glucose, results.raw.minerals],
+            backgroundColor: ['#f1c40f','#e74c3c','#1abc9c']
+          }]
+        }
+      });
+    }
+  </script>
+</body>
+</html>

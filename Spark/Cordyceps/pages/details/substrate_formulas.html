@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cordyceps Substrate Formulas</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+    }
+    .sidebar {
+      width: 250px;
+      background: #2c3e50;
+      color: #fff;
+      height: 100vh;
+      padding-top: 20px;
+      position: fixed;
+    }
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .sidebar a {
+      display: block;
+      padding: 12px 20px;
+      color: #fff;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .sidebar a:hover {
+      background: #34495e;
+    }
+    .content {
+      margin-left: 250px;
+      padding: 20px;
+      width: calc(100% - 250px);
+    }
+    .section {
+      display: none;
+    }
+    .active {
+      display: block;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    table, th, td {
+      border: 1px solid #bdc3c7;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background: #ecf0f1;
+    }
+    h3 {
+      margin-top: 30px;
+      color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Formulas</h2>
+    <a href="#" onclick="showSection('grains')">Grain-based</a>
+    <a href="#" onclick="showSection('insect')">Insect-mimicking</a>
+    <a href="#" onclick="showSection('plant')">Plant-based</a>
+    <a href="#" onclick="showSection('synthetic')">Synthetic</a>
+    <a href="#" onclick="showSection('hybrid')">Hybrid</a>
+  </div>
+
+  <div class="content">
+    <!-- Grain-based -->
+    <div id="grains" class="section active">
+      <h2>Traditional Grain-based Formulas</h2>
+
+      <h3>Formula A (Rice-based, classic)</h3>
+      <table>
+        <tr><th>Ingredient</th><th>Proportion</th></tr>
+        <tr><td>Polished rice</td><td>70–75%</td></tr>
+        <tr><td>Soybean flour</td><td>10%</td></tr>
+        <tr><td>Yeast extract</td><td>1–2%</td></tr>
+        <tr><td>Glucose (sugar)</td><td>2%</td></tr>
+        <tr><td>Mineral mix</td><td>1%</td></tr>
+        <tr><td>Moisture</td><td>60–65%</td></tr>
+      </table>
+
+      <h3>Formula B (Multi-grain, improved growth)</h3>
+      <table>
+        <tr><th>Ingredient</th><th>Proportion</th></tr>
+        <tr><td>Brown rice</td><td>40%</td></tr>
+        <tr><td>Wheat</td><td>20%</td></tr>
+        <tr><td>Barley</td><td>15%</td></tr>
+        <tr><td>Corn flour</td><td>10%</td></tr>
+        <tr><td>Soybean powder</td><td>10%</td></tr>
+        <tr><td>Glucose</td><td>2%</td></tr>
+        <tr><td>Mineral salts</td><td>1%</td></tr>
+        <tr><td>Moisture</td><td>~60%</td></tr>
+      </table>
+    </div>
+
+    <!-- Insect-mimicking -->
+    <div id="insect" class="section">
+      <h2>Insect-Mimicking Substrates</h2>
+
+      <h3>Formula C (Insect analog)</h3>
+      <table>
+        <tr><th>Ingredient</th><th>Proportion</th></tr>
+        <tr><td>Rice flour</td><td>50%</td></tr>
+        <tr><td>Silkworm pupae powder</td><td>20%</td></tr>
+        <tr><td>Wheat bran</td><td>15%</td></tr>
+        <tr><td>Soybean meal</td><td>10%</td></tr>
+        <tr><td>Chitin powder</td><td>2%</td></tr>
+        <tr><td>Yeast extract</td><td>2%</td></tr>
+        <tr><td>Moisture</td><td>~60%</td></tr>
+      </table>
+
+      <h3>Formula D (High protein)</h3>
+      <table>
+        <tr><th>Ingredient</th><th>Proportion</th></tr>
+        <tr><td>Brown rice</td><td>40%</td></tr>
+        <tr><td>Silkworm pupae powder</td><td>30%</td></tr>
+        <tr><td>Fish meal / shrimp shell powder</td><td>10%</td></tr>
+        <tr><td>Corn flour</td><td>10%</td></tr>
+        <tr><td>Yeast extract</td><td>2%</td></tr>
+        <tr><td>Mineral salts</td><td>1%</td></tr>
+        <tr><td>Moisture</td><td>~60%</td></tr>
+      </table>
+    </div>
+
+    <!-- Plant-based -->
+    <div id="plant" class="section">
+      <h2>Plant-based Enriched Substrates</h2>
+
+      <h3>Formula E (Plant protein rich)</h3>
+      <table>
+        <tr><th>Ingredient</th><th>Proportion</th></tr>
+        <tr><td>Rice flour</td><td>40%</td></tr>
+        <tr><td>Soybean powder</td><td>25%</td></tr>
+        <tr><td>Wheat bran</td><td>15%</td></tr>
+        <tr><td>Corn flour</td><td>10%</td></tr>
+        <tr><td>Peanut meal</td><td>5%</td></tr>
+        <tr><td>Glucose</td><td>2%</td></tr>
+        <tr><td>Minerals</td><td>1%</td></tr>
+        <tr><td>Moisture</td><td>~60%</td></tr>
+      </table>
+
+      <h3>Formula F (Balanced plant mix)</h3>
+      <table>
+        <tr><th>Ingredient</th><th>Proportion</th></tr>
+        <tr><td>Brown rice</td><td>50%</td></tr>
+        <tr><td>Chickpea flour</td><td>20%</td></tr>
+        <tr><td>Soybean flour</td><td>15%</td></tr>
+        <tr><td>Corn starch</td><td>10%</td></tr>
+        <tr><td>Yeast extract</td><td>2%</td></tr>
+        <tr><td>Minerals</td><td>1–2%</td></tr>
+        <tr><td>Moisture</td><td>~65%</td></tr>
+      </table>
+    </div>
+
+    <!-- Synthetic -->
+    <div id="synthetic" class="section">
+      <h2>Synthetic (Defined) Substrates</h2>
+
+      <h3>Formula G (Synthetic Basal Medium)</h3>
+      <table>
+        <tr><th>Ingredient</th><th>Concentration</th></tr>
+        <tr><td>Glucose</td><td>20 g/L</td></tr>
+        <tr><td>Peptone</td><td>10 g/L</td></tr>
+        <tr><td>Yeast extract</td><td>5 g/L</td></tr>
+        <tr><td>KH₂PO₄</td><td>1 g/L</td></tr>
+        <tr><td>MgSO₄·7H₂O</td><td>0.5 g/L</td></tr>
+        <tr><td>CaCl₂</td><td>0.1 g/L</td></tr>
+        <tr><td>Trace minerals</td><td>1 mL/L</td></tr>
+        <tr><td>pH</td><td>6.0</td></tr>
+      </table>
+
+      <h3>Formula H (Synthetic High-Nitrogen)</h3>
+      <table>
+        <tr><th>Ingredient</th><th>Concentration</th></tr>
+        <tr><td>Sucrose</td><td>30 g/L</td></tr>
+        <tr><td>(NH₄)₂SO₄</td><td>5 g/L</td></tr>
+        <tr><td>Yeast extract</td><td>3 g/L</td></tr>
+        <tr><td>Peptone</td><td>5 g/L</td></tr>
+        <tr><td>KH₂PO₄</td><td>1 g/L</td></tr>
+        <tr><td>MgSO₄·7H₂O</td><td>0.5 g/L</td></tr>
+        <tr><td>Trace minerals</td><td>1 mL/L</td></tr>
+        <tr><td>pH</td><td>6.2</td></tr>
+      </table>
+    </div>
+
+    <!-- Hybrid -->
+    <div id="hybrid" class="section">
+      <h2>Hybrid Formulas</h2>
+
+      <h3>Formula I (Semi-synthetic solid)</h3>
+      <table>
+        <tr><th>Ingredient</th><th>Proportion</th></tr>
+        <tr><td>Rice</td><td>50%</td></tr>
+        <tr><td>Soybean powder</td><td>20%</td></tr>
+        <tr><td>Glucose</td><td>2%</td></tr>
+        <tr><td>Yeast extract</td><td>2%</td></tr>
+        <tr><td>KH₂PO₄</td><td>0.5%</td></tr>
+        <tr><td>MgSO₄</td><td>0.2%</td></tr>
+        <tr><td>Trace elements</td><td>0.1%</td></tr>
+        <tr><td>Moisture</td><td>~60%</td></tr>
+      </table>
+
+      <h3>Formula J (Bioreactor mimic solid)</h3>
+      <table>
+        <tr><th>Ingredient</th><th>Proportion</th></tr>
+        <tr><td>Corn flour</td><td>40%</td></tr>
+        <tr><td>Soybean meal</td><td>20%</td></tr>
+        <tr><td>Glucose</td><td>5%</td></tr>
+        <tr><td>Yeast extract</td><td>2%</td></tr>
+        <tr><td>KH₂PO₄</td><td>0.5%</td></tr>
+        <tr><td>MgSO₄</td><td>0.2%</td></tr>
+        <tr><td>Silkworm pupae hydrolysate</td><td>10%</td></tr>
+        <tr><td>Moisture</td><td>~65%</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+</body>
+</html>

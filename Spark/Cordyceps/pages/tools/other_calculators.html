@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cordyceps Cultivation Calculators</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+  }
+  /* Sidebar */
+  .sidebar {
+    width: 250px;
+    background: #1e293b;
+    color: #fff;
+    padding: 20px 0;
+    overflow-y: auto;
+  }
+  .sidebar h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
+  .sidebar a {
+    display: block;
+    padding: 12px 20px;
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  .sidebar a:hover, .sidebar a.active {
+    background: #334155;
+    color: #fff;
+  }
+  /* Main Content */
+  .content {
+    flex: 1;
+    padding: 20px;
+    background: #f8fafc;
+    overflow-y: auto;
+  }
+  .calculator {
+    display: none;
+  }
+  .calculator.active {
+    display: block;
+  }
+  h3 {
+    margin-top: 0;
+  }
+  label {
+    display: block;
+    margin: 8px 0 4px;
+  }
+  input, select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  button:hover {
+    background: #1d4ed8;
+  }
+  .result {
+    margin-top: 12px;
+    padding: 10px;
+    background: #e2e8f0;
+    border-radius: 6px;
+  }
+</style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Cordyceps Tools</h2>
+    <a class="active" onclick="showCalc('substrate')">Substrate Volume</a>
+    <a onclick="showCalc('bottles')">Bottle Count</a>
+    <a onclick="showCalc('nutrient')">Nutrient Cost</a>
+    <a onclick="showCalc('yield')">Yield Estimation</a>
+    <a onclick="showCalc('profit')">Batch Profit</a>
+    <a onclick="showCalc('energy')">Energy & Utilities</a>
+    <a onclick="showCalc('time')">Time & Scheduling</a>
+    <a onclick="showCalc('contamination')">Contamination Risk</a>
+    <a onclick="showCalc('storage')">Storage & Shelf-life</a>
+    <a onclick="showCalc('scaling')">Scaling Capacity</a>
+    <a onclick="showCalc('genetics')">Genetics & Strains</a>
+  </div>
+
+  <div class="content">
+    <!-- Substrate Volume Calculator -->
+    <div id="substrate" class="calculator active">
+      <h3>Substrate Volume Calculator</h3>
+      <label>Container Volume (ml):</label>
+      <input type="number" id="containerVol" placeholder="e.g. 500">
+      <label>Fill Percentage (%):</label>
+      <input type="number" id="fillPercent" placeholder="e.g. 70">
+      <button onclick="calcSubstrate()">Calculate</button>
+      <div class="result" id="substrateResult"></div>
+    </div>
+
+    <!-- Bottle Count Calculator -->
+    <div id="bottles" class="calculator">
+      <h3>Bottle Count Calculator</h3>
+      <label>Total Substrate Needed (ml):</label>
+      <input type="number" id="totalSubstrate" placeholder="e.g. 5000">
+      <label>Volume per Bottle (ml):</label>
+      <input type="number" id="volPerBottle" placeholder="e.g. 250">
+      <button onclick="calcBottles()">Calculate</button>
+      <div class="result" id="bottleResult"></div>
+    </div>
+
+    <!-- Nutrient Cost Calculator -->
+    <div id="nutrient" class="calculator">
+      <h3>Nutrient Cost Calculator</h3>
+      <label>Weight of Nutrient (g):</label>
+      <input type="number" id="nutrientWeight" placeholder="e.g. 100">
+      <label>Price per g:</label>
+      <input type="number" id="pricePerG" placeholder="e.g. 2">
+      <button onclick="calcNutrientCost()">Calculate</button>
+      <div class="result" id="nutrientResult"></div>
+    </div>
+
+    <!-- Yield Estimation Calculator -->
+    <div id="yield" class="calculator">
+      <h3>Yield Estimation Calculator</h3>
+      <label>Bottle Count:</label>
+      <input type="number" id="yieldBottles" placeholder="e.g. 20">
+      <label>Average Yield per Bottle (g):</label>
+      <input type="number" id="yieldPerBottle" placeholder="e.g. 10">
+      <button onclick="calcYield()">Calculate</button>
+      <div class="result" id="yieldResult"></div>
+    </div>
+
+    <!-- Profit Calculator -->
+    <div id="profit" class="calculator">
+      <h3>Batch Profit Calculator</h3>
+      <label>Total Yield (g):</label>
+      <input type="number" id="profitYield" placeholder="e.g. 200">
+      <label>Market Price per g:</label>
+      <input type="number" id="marketPrice" placeholder="e.g. 5">
+      <label>Total Cost:</label>
+      <input type="number" id="totalCost" placeholder="e.g. 500">
+      <button onclick="calcProfit()">Calculate</button>
+      <div class="result" id="profitResult"></div>
+    </div>
+
+    <!-- Energy Requirement Calculator -->
+    <div id="energy" class="calculator">
+      <h3>Energy & Utility Calculator</h3>
+      <label>Power Consumption (W):</label>
+      <input type="number" id="powerW" placeholder="e.g. 200">
+      <label>Usage Time (hours):</label>
+      <input type="number" id="usageTime" placeholder="e.g. 24">
+      <label>Cost per kWh:</label>
+      <input type="number" id="costPerKwh" placeholder="e.g. 7">
+      <button onclick="calcEnergy()">Calculate</button>
+      <div class="result" id="energyResult"></div>
+    </div>
+
+    <!-- Time Scheduling Calculator -->
+    <div id="time" class="calculator">
+      <h3>Time & Scheduling Calculator</h3>
+      <label>Start Date:</label>
+      <input type="date" id="startDate">
+      <label>Duration (days):</label>
+      <input type="number" id="durationDays" placeholder="e.g. 60">
+      <button onclick="calcSchedule()">Calculate</button>
+      <div class="result" id="timeResult"></div>
+    </div>
+
+    <!-- Contamination Risk Calculator -->
+    <div id="contamination" class="calculator">
+      <h3>Contamination Risk Calculator</h3>
+      <label>Batches Produced:</label>
+      <input type="number" id="batchCount" placeholder="e.g. 100">
+      <label>Contamination Rate (%):</label>
+      <input type="number" id="contamRate" placeholder="e.g. 5">
+      <button onclick="calcContam()">Calculate</button>
+      <div class="result" id="contamResult"></div>
+    </div>
+
+    <!-- Storage Calculator -->
+    <div id="storage" class="calculator">
+      <h3>Storage & Shelf-life Calculator</h3>
+      <label>Total Yield (g):</label>
+      <input type="number" id="storeYield" placeholder="e.g. 2000">
+      <label>Jar Capacity (g):</label>
+      <input type="number" id="jarCap" placeholder="e.g. 250">
+      <button onclick="calcStorage()">Calculate</button>
+      <div class="result" id="storageResult"></div>
+    </div>
+
+    <!-- Scaling Calculator -->
+    <div id="scaling" class="calculator">
+      <h3>Scaling Calculator</h3>
+      <label>Current Bottles:</label>
+      <input type="number" id="scaleCurrent" placeholder="e.g. 100">
+      <label>Scaling Factor (x):</label>
+      <input type="number" id="scaleFactor" placeholder="e.g. 3">
+      <button onclick="calcScaling()">Calculate</button>
+      <div class="result" id="scalingResult"></div>
+    </div>
+
+    <!-- Genetics Calculator -->
+    <div id="genetics" class="calculator">
+      <h3>Genetics & Strain Comparison</h3>
+      <label>Strain A Yield (g):</label>
+      <input type="number" id="strainA" placeholder="e.g. 200">
+      <label>Strain B Yield (g):</label>
+      <input type="number" id="strainB" placeholder="e.g. 250">
+      <button onclick="calcGenetics()">Compare</button>
+      <div class="result" id="geneticsResult"></div>
+    </div>
+  </div>
+
+<script>
+function showCalc(id) {
+  document.querySelectorAll(".calculator").forEach(el => el.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  document.querySelectorAll(".sidebar a").forEach(el => el.classList.remove("active"));
+  event.target.classList.add("active");
+}
+// Calculations
+function calcSubstrate() {
+  let vol = +document.getElementById("containerVol").value;
+  let percent = +document.getElementById("fillPercent").value;
+  let result = vol * (percent/100);
+  document.getElementById("substrateResult").innerText = "Substrate Volume: " + result.toFixed(2) + " ml";
+}
+function calcBottles() {
+  let total = +document.getElementById("totalSubstrate").value;
+  let per = +document.getElementById("volPerBottle").value;
+  let count = total/per;
+  document.getElementById("bottleResult").innerText = "Required Bottles: " + Math.ceil(count);
+}
+function calcNutrientCost() {
+  let w = +document.getElementById("nutrientWeight").value;
+  let p = +document.getElementById("pricePerG").value;
+  document.getElementById("nutrientResult").innerText = "Total Nutrient Cost: " + (w*p).toFixed(2);
+}
+function calcYield() {
+  let b = +document.getElementById("yieldBottles").value;
+  let y = +document.getElementById("yieldPerBottle").value;
+  document.getElementById("yieldResult").innerText = "Estimated Yield: " + (b*y).toFixed(2) + " g";
+}
+function calcProfit() {
+  let y = +document.getElementById("profitYield").value;
+  let price = +document.getElementById("marketPrice").value;
+  let cost = +document.getElementById("totalCost").value;
+  let revenue = y*price;
+  let profit = revenue-cost;
+  document.getElementById("profitResult").innerText = "Revenue: " + revenue + " | Profit: " + profit;
+}
+function calcEnergy() {
+  let w = +document.getElementById("powerW").value;
+  let h = +document.getElementById("usageTime").value;
+  let c = +document.getElementById("costPerKwh").value;
+  let kwh = (w*h)/1000;
+  let cost = kwh*c;
+  document.getElementById("energyResult").innerText = "Energy Used: " + kwh.toFixed(2) + " kWh | Cost: " + cost.toFixed(2);
+}
+function calcSchedule() {
+  let start = new Date(document.getElementById("startDate").value);
+  let days = +document.getElementById("durationDays").value;
+  let end = new Date(start);
+  end.setDate(start.getDate()+days);
+  document.getElementById("timeResult").innerText = "End Date: " + end.toDateString();
+}
+function calcContam() {
+  let batches = +document.getElementById("batchCount").value;
+  let rate = +document.getElementById("contamRate").value;
+  let contam = (batches*rate)/100;
+  document.getElementById("contamResult").innerText = "Expected Contaminated Batches: " + contam.toFixed(0);
+}
+function calcStorage() {
+  let yieldG = +document.getElementById("storeYield").value;
+  let cap = +document.getElementById("jarCap").value;
+  let jars = yieldG/cap;
+  document.getElementById("storageResult").innerText = "Required Jars: " + Math.ceil(jars);
+}
+function calcScaling() {
+  let current = +document.getElementById("scaleCurrent").value;
+  let factor = +document.getElementById("scaleFactor").value;
+  document.getElementById("scalingResult").innerText = "Scaled Bottles: " + (current*factor);
+}
+function calcGenetics() {
+  let a = +document.getElementById("strainA").value;
+  let b = +document.getElementById("strainB").value;
+  let better = (a>b) ? "Strain A" : (b>a) ? "Strain B" : "Both equal";
+  document.getElementById("geneticsResult").innerText = better + " shows higher yield.";
+}
+</script>
+</body>
+</html>

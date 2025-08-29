@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Cordyceps Cultivation Calculators</title>
+<style>
+:root{--bg:#0b1220;--card:#0f1724;--muted:#9fb3c8;--text:#e6eef6;--accent:#f59e0b;--ok:#10b981}
+@media (prefers-color-scheme: light){:root{--bg:#f6f8fb;--card:#fff;--muted:#475569;--text:#0f172a;--accent:#b45309;--ok:#047857}}
+body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial; background:var(--bg);color:var(--text);}
+.container{max-width:1100px;margin:28px auto;padding:20px}
+.header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.title{font-size:1.4rem;font-weight:700}
+.card{background:var(--card);border:1px solid rgba(255,255,255,0.03);padding:14px;border-radius:12px;margin-top:16px}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.field{flex:1 1 220px;min-width:200px}
+label{display:block;font-size:.85rem;color:var(--muted);margin-bottom:6px}
+input[type='number'],input[type='text'],select{width:100%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--text)}
+button{background:var(--accent);color:#061220;border:none;padding:10px 12px;border-radius:8px;cursor:pointer;font-weight:700}
+.small{font-size:.85rem;color:var(--muted)}
+.table{width:100%;border-collapse:collapse;margin-top:10px}
+.table th,.table td{padding:8px;border-bottom:1px solid rgba(255,255,255,0.03);text-align:left}
+.result{background:linear-gradient(90deg, rgba(245,158,11,0.06), rgba(16,185,129,0.04));padding:10px;border-radius:8px;margin-top:10px}
+.footer{margin-top:18px;color:var(--muted);font-size:.85rem}
+.kv{display:flex;gap:8px;align-items:baseline}
+.kv .num{font-weight:800;font-size:1.2rem;color:var(--text)}
+.note{font-size:.8rem;color:var(--muted);margin-top:8px}
+@media (max-width:720px){.row{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div>
+      <div class="title">Cordyceps Cultivation Calculators</div>
+      <div class="small">Capacity • Space • Raw material estimators — interactive single file.</div>
+    </div>
+    <div>
+      <button id="resetBtn">Reset</button>
+    </div>
+  </div>
+
+  <div class="card" id="capacityCard">
+    <h3>1) Cultivation Capacity & Yield Estimator</h3>
+    <div class="row">
+      <div class="field">
+        <label>Containers (total count)</label>
+        <input id="containers" type="number" min="0" value="100" />
+      </div>
+      <div class="field">
+        <label>Substrate per container (kg, dry equivalent)</label>
+        <input id="substratePer" type="number" min="0" step="0.01" value="0.12" />
+      </div>
+      <div class="field">
+        <label>Expected dry yield (% of substrate mass)</label>
+        <input id="yieldPct" type="number" min="0" step="0.1" value="10" />
+      </div>
+      <div class="field">
+        <label>Batches per month</label>
+        <input id="batchesMonth" type="number" min="0" value="4" />
+      </div>
+    </div>
+    <div class="result" id="capacityResult">
+      <div class="kv"><div class="num" id="totalSub">0</div><div class="small">kg total substrate per batch</div></div>
+      <div class="kv" style="margin-top:6px"><div class="num" id="dryYield">0</div><div class="small">kg dry product per batch</div></div>
+      <div class="kv" style="margin-top:6px"><div class="num" id="monthlyYield">0</div><div class="small">kg dry product per month</div></div>
+      <div class="kv" style="margin-top:6px"><div class="num" id="annualYield">0</div><div class="small">kg dry product per year (est.)</div></div>
+    </div>
+    <div class="note">Tip: substrate per container = wet substrate dry‑equivalent. Yield % is dried product mass divided by substrate dry mass (user estimate).</div>
+  </div>
+
+  <div class="card" id="spaceCard">
+    <h3>2) Space Requirement Calculator</h3>
+    <div class="row">
+      <div class="field"><label>Container footprint (length × width cm)</label>
+        <div style="display:flex;gap:6px"><input id="footL" type="number" value="10"/><input id="footW" type="number" value="10"/></div>
+      </div>
+      <div class="field"><label>Containers per layer (max)</label><input id="perLayer" type="number" value="100"/></div>
+      <div class="field"><label>Stacking layers (vertical)</label><input id="layers" type="number" value="3"/></div>
+      <div class="field"><label>Working aisle factor (0.0–2.0)</label><input id="aisleFactor" type="number" step="0.1" value="1.2"/></div>
+    </div>
+    <div class="result" id="spaceResult">
+      <div class="kv"><div class="num" id="areaNeeded">0</div><div class="small">m² footprint required (including aisles)</div></div>
+      <div class="kv" style="margin-top:6px"><div class="num" id="volumeNeeded">0</div><div class="small">m³ (approx) room volume for stacked layers</div></div>
+      <div class="kv" style="margin-top:6px"><div class="num" id="containersPerRoom">0</div><div class="small">Estimated containers accommodated</div></div>
+    </div>
+    <div class="note">Note: this calculator provides rough estimates for planning. Adjust aisle factor to account for access and equipment.</div>
+  </div>
+
+  <div class="card" id="materialsCard">
+    <h3>3) Raw Materials & Chemicals Estimator</h3>
+    <p class="small">Enter total substrate mass (kg) for the production batch; default ingredient percentages are editable. Values update totals for each ingredient and trace minerals.</p>
+    <div class="row">
+      <div class="field"><label>Total substrate mass (kg)</label><input id="totalSubMass" type="number" value="12" step="0.1"/></div>
+      <div class="field"><label>Water/moisture allowance (% of wet mass)</label><input id="moistPct" type="number" value="60" step="1"/></div>
+    </div>
+    <h4 style="margin-top:12px">Ingredient percentages (percent of dry substrate)</h4>
+    <div class="row">
+      <div class="field"><label>Protein (soy/peptone) %</label><input id="pctProtein" type="number" value="30" step="0.1"/></div>
+      <div class="field"><label>Chitin %</label><input id="pctChitin" type="number" value="5" step="0.1"/></div>
+      <div class="field"><label>Carbohydrate (rice/starch) %</label><input id="pctCarb" type="number" value="40" step="0.1"/></div>
+      <div class="field"><label>Yeast extract %</label><input id="pctYeast" type="number" value="5" step="0.1"/></div>
+      <div class="field"><label>Lipids / oil %</label><input id="pctOil" type="number" value="1" step="0.1"/></div>
+      <div class="field"><label>Other (minerals, binders) %</label><input id="pctOther" type="number" value="19" step="0.1"/></div>
+    </div>
+
+    <h4 style="margin-top:12px">Trace minerals (per kg dry substrate; ppm default, editable)</h4>
+    <div class="row">
+      <div class="field"><label>Mg (ppm)</label><input id="ppmMg" type="number" value="2000" step="1"/></div>
+      <div class="field"><label>Fe (ppm)</label><input id="ppmFe" type="number" value="1000" step="1"/></div>
+      <div class="field"><label>Zn (ppm)</label><input id="ppmZn" type="number" value="50" step="1"/></div>
+      <div class="field"><label>Se (ppm)</label><input id="ppmSe" type="number" value="0.5" step="0.1"/></div>
+    </div>
+
+    <div class="result" id="materialsResult">
+      <table class="table" id="materialsTable">
+        <thead><tr><th>Ingredient</th><th>Amount (kg)</th><th>Notes</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <h4>Trace minerals (total per batch)</h4>
+      <table class="table" id="minTable"><thead><tr><th>Mineral</th><th>Amount (g)</th></tr></thead><tbody></tbody></table>
+    </div>
+
+    <div class="note">Warning: these are estimation calculators to help plan procurement. Verify final formulations and safety with lab SOPs and EHS before ordering or using chemicals.</div>
+  </div>
+
+  <div class="card" id="procureCard">
+    <h3>4) Procurement Summary (per month/year)</h3>
+    <div class="row">
+      <div class="field"><label>Batches per month</label><input id="batchesPerMonth" type="number" value="4"/></div>
+      <div class="field"><label>Safety margin (%)</label><input id="safetyMargin" type="number" value="10"/></div>
+    </div>
+    <div class="result" id="procureResult"></div>
+    <div class="note">This tab aggregates ingredient totals across the number of monthly batches to give procurement quantities. Use safety margin for buffer stock.</div>
+  </div>
+
+  <div class="footer">Disclaimer: The calculators are for planning and estimation only. They do not provide culturing parameters, procedural steps, or operational SOPs. Always consult institutional EHS and SOPs before procuring or using materials.</div>
+</div>
+
+<script>
+function n(v){return Number(v)||0}
+function fmt(v,dec=2){return (Math.round(v*(10**dec))/(10**dec)).toLocaleString()}
+
+function computeCapacity(){
+  const containers=n(document.getElementById('containers').value)
+  const subPer=n(document.getElementById('substratePer').value)
+  const yieldPct=n(document.getElementById('yieldPct').value)
+  const batchesMonth=n(document.getElementById('batchesMonth').value)
+  const totalSub=containers*subPer
+  const dryYield= totalSub*(yieldPct/100)
+  const monthly= dryYield*batchesMonth
+  const annual= monthly*12
+  document.getElementById('totalSub').textContent=fmt(totalSub,2)
+  document.getElementById('dryYield').textContent=fmt(dryYield,2)
+  document.getElementById('monthlyYield').textContent=fmt(monthly,2)
+  document.getElementById('annualYield').textContent=fmt(annual,1)
+}
+
+function computeSpace(){
+  const footL=n(document.getElementById('footL').value)/100
+  const footW=n(document.getElementById('footW').value)/100
+  const perLayer=n(document.getElementById('perLayer').value)
+  const layers=n(document.getElementById('layers').value)
+  const aisleFactor=n(document.getElementById('aisleFactor').value)
+  const containers=n(document.getElementById('containers').value)
+  const areaPer=footL*footW*perLayer
+  const baseArea= (containers/perLayer)*footL*footW/ (layers||1)
+  const adjusted= baseArea*aisleFactor
+  const roomVolume= adjusted * (layers*0.25 + 2) // approximate headroom
+  document.getElementById('areaNeeded').textContent=fmt(adjusted,2)
+  document.getElementById('volumeNeeded').textContent=fmt(roomVolume,1)
+  const cap=Math.floor((adjusted/(footL*footW))*layers)
+  document.getElementById('containersPerRoom').textContent=fmt(cap,0)
+}
+
+function computeMaterials(){
+  const totalMass=n(document.getElementById('totalSubMass').value)
+  const pctProtein=n(document.getElementById('pctProtein').value)
+  const pctChitin=n(document.getElementById('pctChitin').value)
+  const pctCarb=n(document.getElementById('pctCarb').value)
+  const pctYeast=n(document.getElementById('pctYeast').value)
+  const pctOil=n(document.getElementById('pctOil').value)
+  const pctOther=n(document.getElementById('pctOther').value)
+  const row=[]
+  const protein= totalMass*(pctProtein/100)
+  const chitin = totalMass*(pctChitin/100)
+  const carb = totalMass*(pctCarb/100)
+  const yeast = totalMass*(pctYeast/100)
+  const oil = totalMass*(pctOil/100)
+  const other = totalMass*(pctOther/100)
+  row.push({name:'Protein (soy/peptone)',kg:protein,notes:'Organic nitrogen source'})
+  row.push({name:'Chitin powder',kg:chitin,notes:'Host mimic / enzyme induction'})
+  row.push({name:'Carbohydrate (rice/starch)',kg:carb,notes:'Matrix & carbon'})
+  row.push({name:'Yeast extract',kg:yeast,notes:'Vitamins & co‑factors'})
+  row.push({name:'Lipids / oil',kg:oil,notes:'Membrane / sporulation'})
+  row.push({name:'Other (minerals, binders)',kg:other,notes:'Including buffers & trace salts'})
+
+  const tbody=document.querySelector('#materialsTable tbody'); tbody.innerHTML=''
+  row.forEach(r=>{const tr=document.createElement('tr'); tr.innerHTML=`<td>${r.name}</td><td>${fmt(r.kg,3)}</td><td class="small">${r.notes}</td>`; tbody.appendChild(tr)})
+
+  // trace minerals
+  const ppmMg=n(document.getElementById('ppmMg').value)
+  const ppmFe=n(document.getElementById('ppmFe').value)
+  const ppmZn=n(document.getElementById('ppmZn').value)
+  const ppmSe=n(document.getElementById('ppmSe').value)
+  // ppm -> g per kg = ppm/1000
+  const mgTotal = totalMass * (ppmMg/1000)
+  const feTotal = totalMass * (ppmFe/1000)
+  const znTotal = totalMass * (ppmZn/1000)
+  const seTotal = totalMass * (ppmSe/1000)
+  const mtbody=document.querySelector('#minTable tbody'); mtbody.innerHTML=''
+  [{k:'Mg',v:mgTotal},{k:'Fe',v:feTotal},{k:'Zn',v:znTotal},{k:'Se',v:seTotal}].forEach(x=>{const tr=document.createElement('tr'); tr.innerHTML=`<td>${x.k}</td><td>${fmt(x.v,4)} g</td>`; mtbody.appendChild(tr)})
+}
+
+function computeProcure(){
+  const batches=n(document.getElementById('batchesPerMonth').value)
+  const safety=n(document.getElementById('safetyMargin').value)
+  const totalMass=n(document.getElementById('totalSubMass').value)
+  const multiplier=1 + (safety/100)
+  // take materials table values
+  const tbody=document.querySelector('#materialsTable tbody')
+  let html='<table class="table"><thead><tr><th>Item</th><th>Monthly (kg)</th><th>Yearly (kg)</th></tr></thead><tbody>'
+  for(const tr of tbody.children){
+    const name=tr.children[0].textContent
+    const perBatch=n(tr.children[1].textContent.replace(/,/g,''))
+    const monthly=perBatch * batches * multiplier
+    const yearly= monthly * 12
+    html += `<tr><td>${name}</td><td>${fmt(monthly,3)}</td><td>${fmt(yearly,2)}</td></tr>`
+  }
+  html += '</tbody></table>'
+  // minerals
+  const minTb=document.querySelector('#minTable tbody')
+  html += '<h4 style="margin-top:10px">Trace minerals (monthly / yearly)</h4>'
+  html += '<table class="table"><thead><tr><th>Mineral</th><th>Monthly (g)</th><th>Yearly (g)</th></tr></thead><tbody>'
+  for(const tr of minTb.children){
+    const name=tr.children[0].textContent
+    const perBatchG=parseFloat(tr.children[1].textContent)
+    const monthly= perBatchG * batches * multiplier
+    const yearly= monthly * 12
+    html += `<tr><td>${name}</td><td>${fmt(monthly,3)}</td><td>${fmt(yearly,1)}</td></tr>`
+  }
+  html += '</tbody></table>'
+  document.getElementById('procureResult').innerHTML=html
+}
+
+// wire up events
+[...document.querySelectorAll('input')].forEach(inp=>inp.addEventListener('input',()=>{computeCapacity(); computeSpace(); computeMaterials(); computeProcure();}))
+
+// reset
+document.getElementById('resetBtn').addEventListener('click',()=>{location.reload()})
+
+// initial
+computeCapacity(); computeSpace(); computeMaterials(); computeProcure();
+</script>
+</body>
+</html>

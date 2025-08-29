@@ -1,0 +1,34 @@
+    {
+      "name": "Kids",
+      "default": "https://www.google.com",
+      "description": "Description for Kids Profile",
+      "groups": [
+        {
+          "name": "Group 1",
+          "pages": [
+            {
+              "name": "Page 1",
+              "path": "pages/group1/page1.html"
+            }
+          ]
+        },
+        {
+          "name": "Group 2",
+          "pages": [
+            {
+              "name": "Page 2",
+              "path": "pages/group2/page2.html"
+            }
+          ]
+        },
+        {
+          "name": "Group 3",
+          "pages": [
+            {
+              "name": "Page 3",
+              "path": "pages/group3/page3.html"
+            }
+          ]
+        }
+      ]
+    }

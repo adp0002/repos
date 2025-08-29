@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cordyceps militaris — Mycology & Cultivation Knowledge</title>
+  <style>
+    :root{
+      --bg:#0b0f14;--panel:#0f1520;--text:#e7eef7;--muted:#9fb3c8;--brand:#f59e0b;--ok:#10b981;--warn:#f59e0b;--bad:#ef4444;--border:#1f2937;
+      --card:#0c121b;--chip:#111827;--link:#60a5fa;--kbd:#0b1020;--print-text:#111827;--print-bg:#ffffff;
+    }
+    @media (prefers-color-scheme: light){
+      :root{--bg:#ffffff;--panel:#f8fafc;--text:#0f172a;--muted:#475569;--brand:#b45309;--border:#e2e8f0;--card:#ffffff;--chip:#f1f5f9;--link:#1d4ed8;--kbd:#eceff7;--print-text:#0f172a;--print-bg:#ffffff;}
+    }
+    html,body{height:100%;}
+    body{margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--text);}
+    .container{max-width:1100px;margin:0 auto;padding:24px;}
+    header{position:sticky;top:0;background:linear-gradient(180deg, rgba(11,15,20,.95) 0%, rgba(11,15,20,.75) 100%);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);z-index:10}
+    header .inner{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:12px 24px;}
+    h1{font-size:clamp(1.6rem,1.3rem+1.5vw,2.2rem);margin:0;color:var(--text)}
+    .badge{background:var(--chip);color:var(--muted);border:1px solid var(--border);padding:6px 10px;border-radius:999px;font-size:.8rem}
+    nav{display:flex;gap:10px;flex-wrap:wrap}
+    nav a{color:var(--link);text-decoration:none;font-weight:600}
+    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
+    section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;}
+    section h2{margin-top:0;display:flex;align-items:center;gap:10px;font-size:1.25rem}
+    .pill{display:inline-block;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:var(--chip);color:var(--muted);font-size:.8rem}
+    .callout{border-left:4px solid var(--brand);background:rgba(245,158,11,.08);padding:12px 14px;border-radius:8px;margin:12px 0}
+    .ok{border-left-color:var(--ok);background:rgba(16,185,129,.08)}
+    .warn{border-left-color:var(--warn);background:rgba(245,158,11,.08)}
+    .bad{border-left-color:var(--bad);background:rgba(239,68,68,.08)}
+    .kpi{display:flex;gap:16px;flex-wrap:wrap}
+    .kpi .card{flex:1 1 180px;background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:16px}
+    .kpi .num{font-weight:800;font-size:1.4rem}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:10px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+    th{color:var(--muted);font-weight:600}
+    code,kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+    kbd{background:var(--kbd);border:1px solid var(--border);border-bottom-width:2px;border-radius:6px;padding:2px 6px}
+    details{border:1px solid var(--border);border-radius:12px;padding:12px;background:var(--panel)}
+    details summary{cursor:pointer;font-weight:600}
+    .toc{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .toc a{border:1px solid var(--border);background:var(--chip);padding:6px 10px;border-radius:999px;text-decoration:none;color:var(--text)}
+    .tag{font-size:.75rem;opacity:.8}
+    footer{color:var(--muted);padding:24px;text-align:center}
+    .float-actions{position:fixed;right:16px;bottom:16px;display:flex;flex-direction:column;gap:8px}
+    .btn{background:var(--panel);border:1px solid var(--border);color:var(--text);padding:10px 12px;border-radius:12px;cursor:pointer;font-weight:600}
+    .btn:hover{filter:brightness(1.1)}
+    @media print{
+      body{background:var(--print-bg);color:var(--print-text)}
+      header{position:static;background:transparent;border:none}
+      section, .kpi .card{break-inside:avoid}
+      .float-actions{display:none}
+      a{text-decoration:none;color:inherit}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="inner container">
+      <h1>⚗️ Cordyceps <em>militaris</em> — Mycology & Cultivation Knowledge</h1>
+      <span class="badge">Practitioner Reference</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <p class="tag">Overview</p>
+      <p>
+        This page compiles <strong>mycology-centric knowledge</strong> for cultivating <em>Cordyceps militaris</em> — from life cycle and substrate science to SOPs, contamination control, and analytics. Designed for lab and small-scale commercial operators.
+      </p>
+      <div class="toc">
+        <a href="#taxonomy">Taxonomy</a>
+        <a href="#lifecycle">Life Cycle</a>
+        <a href="#substrate">Substrate Science</a>
+        <a href="#environment">Environment Control</a>
+        <a href="#sop">Cultivation SOP</a>
+        <a href="#contam">Contamination Control</a>
+        <a href="#biochem">Biochemistry & Metabolites</a>
+        <a href="#analytics">Analytics</a>
+        <a href="#troubleshoot">Troubleshooting</a>
+        <a href="#glossary">Glossary</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="kpi">
+        <div class="card"><div class="num">18–22 °C</div><div class="label">Fruiting temperature</div></div>
+        <div class="card"><div class="num">80–90 %</div><div class="label">Fruiting RH</div></div>
+        <div class="card"><div class="num">500–1000 lux</div><div class="label">Light cycle 12–14 h/d</div></div>
+        <div class="card"><div class="num">&lt;1000 ppm</div><div class="label">CO₂ during fruiting</div></div>
+      </div>
+    </section>
+
+    <section id="taxonomy">
+      <h2>🧬 Taxonomy & Identity</h2>
+      <ul>
+        <li><strong>Kingdom</strong> Fungi • <strong>Phylum</strong> Ascomycota • <strong>Class</strong> Sordariomycetes • <strong>Order</strong> Hypocreales • <strong>Genus</strong> <em>Cordyceps</em></li>
+        <li>Entomopathogenic fungus targeting lepidopteran larvae and pupae in nature.</li>
+        <li>Key trait: production of <strong>cordycepin</strong> (3′-deoxyadenosine) and <strong>adenosine</strong>.</li>
+      </ul>
+      <div class="callout ok">Tip: Maintain master cultures on low‑nutrient slants (e.g., MEA) at 4 °C; subculture every 2–3 months to minimize senescence.</div>
+    </section>
+
+    <section id="lifecycle">
+      <h2>🧫 Life Cycle & Morphology</h2>
+      <ol>
+        <li><strong>Spore (conidia)</strong> germination on nutrient surface (PDA/MEA).</li>
+        <li><strong>Hyphal growth → mycelium</strong> with septate hyphae; orange pigmentation common.</li>
+        <li><strong>Primordia</strong> (hyphal knots) form under light & aeration triggers.</li>
+        <li><strong>Fruiting bodies</strong> (club‑shaped stromata) develop and accumulate metabolites.</li>
+      </ol>
+      <div class="grid">
+        <div class="callout">Germination window: 18–22 °C, moderate moisture, low light.</div>
+        <div class="callout ok">Fruiting trigger: light exposure, lower CO₂, high RH, stable temps.</div>
+      </div>
+    </section>
+
+    <section id="substrate">
+      <h2>🌾 Substrate Science</h2>
+      <p>Goal: provide balanced <strong>C:N</strong>, trace minerals (Mg, Zn, Fe, Se), lipids/sterols, and chitin to mimic insect hosts.</p>
+      <table>
+        <thead><tr><th>Component</th><th>Role</th><th>Typical Range</th></tr></thead>
+        <tbody>
+          <tr><td>Brown rice / millet</td><td>Carbohydrate matrix, structure</td><td>50–80 g per 1 L jar</td></tr>
+          <tr><td>Yeast extract / peptone</td><td>Nitrogen, vitamins</td><td>1–10 g per jar</td></tr>
+          <tr><td>Chitin powder</td><td>Host mimic, enzyme induction</td><td>2–5 % w/w</td></tr>
+          <tr><td>Mineral salts (Mg, Zn, Fe, Se)</td><td>Enzyme cofactors</td><td>ppm–mg per jar</td></tr>
+          <tr><td>Lipids (plant/insect oil)</td><td>Membranes, signaling</td><td>0.5–1 % w/w</td></tr>
+        </tbody>
+      </table>
+      <details>
+        <summary>Synthetic insect‑mimic substrate (per 1 kg dry mix)</summary>
+        <pre><code>Soybean powder 300 g; Chitin 50 g; Wheat germ/Cornmeal 150 g; Yeast extract 50 g; Peptone 30 g;
+Glucose/Maltose 100 g; CaCO₃ 20 g; MgSO₄·7H₂O 5 g; FeSO₄ 1 g; ZnSO₄ 0.5 g; Selenium yeast 0.1 g;
+KH₂PO₄ 2.5 g; K₂HPO₄ 2.5 g; Water to 55–60% moisture.</code></pre>
+      </details>
+      <div class="callout warn">Keep moisture ~55–60%. Over‑wet substrates cause anaerobic pockets and contamination.</div>
+    </section>
+
+    <section id="environment">
+      <h2>💡 Environment Control</h2>
+      <div class="grid">
+        <section>
+          <h3>Incubation (mycelial)</h3>
+          <ul>
+            <li>20–22 °C • RH 60–70% • darkness • 10–15 days</li>
+            <li>High CO₂ tolerated; minimal handling.</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Fruiting</h3>
+          <ul>
+            <li>20–22 °C • RH 80–90% • CO₂ &lt; 1000 ppm</li>
+            <li>Light 500–1000 lux, 12–14 h/day (green 520–540 nm or red:blue 1:1).</li>
+          </ul>
+        </section>
+      </div>
+      <div class="callout ok">Air exchange: 2–4 brief exchanges/day or filtered fans. Avoid direct drafts that desiccate primordia.</div>
+    </section>
+
+    <section id="sop">
+      <h2>📋 Cultivation SOP (Jar Method)</h2>
+      <ol>
+        <li><strong>Prepare master culture:</strong> Maintain on MEA/PDA at 20–22 °C.</li>
+        <li><strong>Liquid spawn:</strong> 100 mL PDB with agar wedge; shake 120–150 RPM for 5–7 days.</li>
+        <li><strong>Substrate load:</strong> 100–120 g per 1 L jar (55–60% moisture).</li>
+        <li><strong>Sterilize:</strong> 121 °C, 60–90 min; cool overnight.</li>
+        <li><strong>Inoculate:</strong> 5–10 mL liquid spawn or 1–2 agar wedges; breathable lids.</li>
+        <li><strong>Incubate:</strong> 10–15 days until full colonization.</li>
+        <li><strong>Induce fruiting:</strong> Move to lighted, humid chamber per specs above.</li>
+        <li><strong>Harvest:</strong> 30–45 days post‑inoculation when stromata are bright orange and firm.</li>
+        <li><strong>Dry:</strong> 40–50 °C to &lt;6% moisture; store airtight, dark, cool.</li>
+      </ol>
+      <div class="callout">QC: log temp/RH/light daily; photo‑document growth; sample for cordycepin by HPLC if available.</div>
+    </section>
+
+    <section id="contam">
+      <h2>🛡️ Contamination Control</h2>
+      <table>
+        <thead><tr><th>Threat</th><th>Sign</th><th>Prevention</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td><em>Trichoderma</em></td><td>Fast green patches</td><td>Aseptic technique, sterile grain, proper moisture</td><td>Isolate/discard jar; sanitize area</td></tr>
+          <tr><td>Bacteria</td><td>Wet, sour smell, slimy grains</td><td>Rinse grains, proper sterilization</td><td>Discard; review sterilization cycle</td></tr>
+          <tr><td>Black molds</td><td>Dark spots, fuzzy hyphae</td><td>HEPA filtration, clean room discipline</td><td>Quarantine; increase air sanitation</td></tr>
+        </tbody>
+      </table>
+      <div class="callout bad">Never attempt to remediate contaminated jars by scraping; spores spread easily. Prioritize operator safety (mask, gloves).</div>
+    </section>
+
+    <section id="biochem">
+      <h2>🧪 Biochemistry & Metabolites</h2>
+      <ul>
+        <li><strong>Cordycepin</strong> (3′‑deoxyadenosine): RNA chain terminator; peaks during fruiting.</li>
+        <li><strong>Adenosine</strong>, <strong>D‑mannitol</strong>, <strong>ergosterol</strong>, polysaccharides.</li>
+        <li>Key genes: <code>cns1–cns4</code> cluster; transport via ABC transporter (<code>cns4</code>).</li>
+        <li>Up‑regulation under light stress, moderate hypoxia, and balanced C:N.</li>
+      </ul>
+      <details>
+        <summary>Boosting strategies</summary>
+        <ul>
+          <li>Trace Se/Zn inclusion; green or red‑blue LED exposure (12–14 h/day).</li>
+          <li>Static/liquid two‑stage fermentation for higher cordycepin in broth.</li>
+          <li>Maintain CO₂ under 1000 ppm during fruiting; avoid temperature swings.</li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="analytics">
+      <h2>📈 Analytics & QA/QC</h2>
+      <ul>
+        <li><strong>HPLC/LC‑MS</strong>: cordycepin & adenosine quantification.</li>
+        <li><strong>Microscopy</strong>: hyphal health, spore morphology.</li>
+        <li><strong>Moisture assay</strong>: gravimetric to verify ≤6% in dried product.</li>
+        <li><strong>Environmental logs</strong>: temp/RH/CO₂/light charting per batch.</li>
+      </ul>
+    </section>
+
+    <section id="troubleshoot">
+      <h2>🧯 Troubleshooting Guide</h2>
+      <table>
+        <thead><tr><th>Symptom</th><th>Likely Cause</th><th>Fix</th></tr></thead>
+        <tbody>
+          <tr><td>No primordia after 2 weeks</td><td>Insufficient light or high CO₂</td><td>Increase to 500–1000 lux; add air exchanges</td></tr>
+          <tr><td>Thin, pale stromata</td><td>Low nutrients or low humidity</td><td>Raise RH to 85–90%; verify substrate enrichment</td></tr>
+          <tr><td>Wet, sour substrate</td><td>Excess moisture or bacteria</td><td>Re‑formulate to 55–60% moisture; confirm sterilization</td></tr>
+          <tr><td>Orange turns brown early</td><td>Over‑lighting or heat stress</td><td>Reduce lux/photoperiod; stabilize 20–22 °C</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="glossary">
+      <h2>📚 Glossary</h2>
+      <ul>
+        <li><strong>Conidia</strong>: Asexual spores produced by <em>C. militaris</em>.</li>
+        <li><strong>Stroma</strong>: Club‑like fruiting body bearing spores.</li>
+        <li><strong>Primordia</strong>: Initial fruiting structures arising from mycelium.</li>
+        <li><strong>C:N Ratio</strong>: Carbon to nitrogen balance in substrate.</li>
+        <li><strong>Senescence</strong>: Loss of vigor after many subcultures.</li>
+      </ul>
+    </section>
+
+    <section id="faq">
+      <h2>❓ FAQ</h2>
+      <details>
+        <summary>What light spectrum works best?</summary>
+        <p>Green (520–540 nm) or a balanced red:blue mix at 500–1000 lux, 12–14 h/day. Blue aids primordia; red supports morphogenesis. Avoid overheating LEDs.</p>
+      </details>
+      <details>
+        <summary>Can I reuse substrate for a second flush?</summary>
+        <p>Yes, if contamination‑free. Expect reduced yield; re‑humidify environment and keep CO₂ low.</p>
+      </details>
+      <details>
+        <summary>Rice vs insect‑mimic substrates?</summary>
+        <p>Rice is simple and reliable. Insect‑mimic blends (protein, chitin, minerals) can enhance bioactives but require strict moisture control.</p>
+      </details>
+    </section>
+
+    <div class="float-actions">
+      <button class="btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
+      <button class="btn" onclick="copyLink()">🔗 Copy Section Link</button>
+    </div>
+  </main>
+
+  <footer>
+    <small>Prepared as a practitioner reference for <em>Cordyceps militaris</em> cultivation. Customize parameters based on strain and local conditions.</small>
+  </footer>
+
+  <script>
+    function copyLink(){
+      const sel = document.getSelection();
+      if(!sel || sel.rangeCount===0){ navigator.clipboard.writeText(location.href); return; }
+      const el = sel.anchorNode && sel.anchorNode.parentElement ? sel.anchorNode.parentElement.closest('section,[id]') : null;
+      const id = el && el.id ? el.id : '';
+      const url = id ? location.origin + location.pathname + '#' + id : location.href;
+      navigator.clipboard.writeText(url);
+      alert('Link copied: ' + url);
+    }
+  </script>
+</body>
+</html>

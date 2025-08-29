@@ -1,0 +1,117 @@
+{
+      "name": "Cordyceps",
+      "default": "Cordyceps/pages/cultivation/methods.html",
+      "description": "Description for Cordyceps Profile",
+      "groups": [
+        {
+          "name": "Details",
+          "pages": [
+            {
+              "name": "Introduction",
+              "path": "Cordyceps/pages/images/gallery.html"
+            },
+            {
+              "name": "Micology",
+              "path": "Cordyceps/pages/details/micology.html"
+            },
+            {
+              "name": "Biology",
+              "path": "Cordyceps/pages/details/biology.html"
+            },
+            {
+              "name": "Knowledge",
+              "path": "Cordyceps/pages/details/knowledge.html"
+            },
+            {
+              "name": "Liquid culture",
+              "path": "Cordyceps/pages/details/liquid_culture.html"
+            },
+            {
+              "name": "Substrate",
+              "path": "Cordyceps/pages/details/substrate.html"
+            },
+            {
+              "name": "Requirements",
+              "path": "Cordyceps/pages/details/requirements.html"
+            },
+            {
+              "name": "Substrate Formulas",
+              "path": "Cordyceps/pages/details/substrate_formulas.html"
+            }
+          ]
+        },
+        {
+          "name": "Cultivation",
+          "pages": [
+            {
+              "name": "Methods",
+              "path": "Cordyceps/pages/cultivation/methods.html"
+            },
+                        {
+              "name": "Knowledge",
+              "path": "Cordyceps/pages/cultivation/knowledge.html"
+            }
+          ]
+        },
+        {
+          "name": "Gallery",
+          "pages": [
+            {
+              "name": "Cultivation Process",
+              "path": "Cordyceps/pages/images/gallery.html"
+            }
+          ]
+        },
+        {
+          "name": "Wikipedia",
+          "pages": [
+            {
+              "name": "Fungus",
+              "path": "https://en.wikipedia.org/wiki/Fungus"
+            },
+            {
+              "name": "Cordycepin",
+              "path": "https://en.wikipedia.org/wiki/Cordycepin"
+            },
+            {
+              "name": "Cordyceps militaris",
+              "path": "https://en.wikipedia.org/wiki/Cordyceps_militaris"
+            }
+          ]
+        },
+        {
+          "name": "Tools",
+          "pages": [
+            {
+              "name": "Web Editor",
+              "path": "https://www.w3schools.com/html/tryit.asp?filename=tryhtml_editor"
+            },
+            {
+              "name": "MD to HTML",
+              "path": "https://markdowntohtml.com"
+            },
+            {
+              "name": "Calculators",
+              "path": "Cordyceps/pages/tools/calculators.html"
+            },
+            {
+              "name": "Other Calculators",
+              "path": "Cordyceps/pages/tools/other_calculators.html"
+            }
+          ]
+        },
+        {
+          "name": "References",
+          "pages": [
+            {
+              "name": "Links",
+              "path": "Cordyceps/pages/References/references.html"
+            },
+            {
+              "name": "Google",
+              "path": "www.google.com"
+            }
+          ]
+        }
+      ]
+    }

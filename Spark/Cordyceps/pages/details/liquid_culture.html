@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cordyceps militaris — Liquid Culture (High‑Level Guide)</title>
+  <style>
+    :root{
+      --bg:#0b0f14;--panel:#0f1520;--text:#e7eef7;--muted:#9fb3c8;--brand:#f59e0b;--ok:#10b981;--warn:#f59e0b;--bad:#ef4444;--border:#1f2937;
+      --card:#0c121b;--chip:#111827;--link:#60a5fa;--kbd:#0b1020;--print-text:#111827;--print-bg:#ffffff;
+    }
+    @media (prefers-color-scheme: light){
+      :root{--bg:#ffffff;--panel:#f8fafc;--text:#0f172a;--muted:#475569;--brand:#b45309;--border:#e2e8f0;--card:#ffffff;--chip:#f1f5f9;--link:#1d4ed8;--kbd:#eceff7;--print-text:#0f172a;--print-bg:#ffffff;}
+    }
+    html,body{height:100%;}
+    body{margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--text);}
+    .container{max-width:1100px;margin:0 auto;padding:24px;}
+    header{position:sticky;top:0;background:linear-gradient(180deg, rgba(11,15,20,.95) 0%, rgba(11,15,20,.75) 100%);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);z-index:10}
+    header .inner{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:12px 24px;}
+    h1{font-size:clamp(1.6rem,1.3rem+1.5vw,2.2rem);margin:0;color:var(--text)}
+    .badge{background:var(--chip);color:var(--muted);border:1px solid var(--border);padding:6px 10px;border-radius:999px;font-size:.8rem}
+    nav{display:flex;gap:10px;flex-wrap:wrap}
+    nav a{color:var(--link);text-decoration:none;font-weight:600}
+    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
+    section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;}
+    section h2{margin-top:0;display:flex;align-items:center;gap:10px;font-size:1.25rem}
+    .pill{display:inline-block;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:var(--chip);color:var(--muted);font-size:.8rem}
+    .callout{border-left:4px solid var(--brand);background:rgba(245,158,11,.08);padding:12px 14px;border-radius:8px;margin:12px 0}
+    .ok{border-left-color:var(--ok);background:rgba(16,185,129,.08)}
+    .warn{border-left-color:var(--warn);background:rgba(245,158,11,.08)}
+    .bad{border-left-color:var(--bad);background:rgba(239,68,68,.08)}
+    .kpi{display:flex;gap:16px;flex-wrap:wrap}
+    .kpi .card{flex:1 1 220px;background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:16px}
+    .kpi .num{font-weight:800;font-size:1.1rem}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:10px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+    th{color:var(--muted);font-weight:600}
+    code,kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+    kbd{background:var(--kbd);border:1px solid var(--border);border-bottom-width:2px;border-radius:6px;padding:2px 6px}
+    details{border:1px solid var(--border);border-radius:12px;padding:12px;background:var(--panel)}
+    details summary{cursor:pointer;font-weight:600}
+    .toc{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .toc a{border:1px solid var(--border);background:var(--chip);padding:6px 10px;border-radius:999px;text-decoration:none;color:var(--text)}
+    .tag{font-size:.75rem;opacity:.8}
+    footer{color:var(--muted);padding:24px;text-align:center}
+    .float-actions{position:fixed;right:16px;bottom:16px;display:flex;flex-direction:column;gap:8px}
+    .btn{background:var(--panel);border:1px solid var(--border);color:var(--text);padding:10px 12px;border-radius:12px;cursor:pointer;font-weight:600}
+    .btn:hover{filter:brightness(1.1)}
+    @media print{
+      body{background:var(--print-bg);color:var(--print-text)}
+      header{position:static;background:transparent;border:none}
+      section, .kpi .card{break-inside:avoid}
+      .float-actions{display:none}
+      a{text-decoration:none;color:inherit}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="inner container">
+      <h1>💧 Cordyceps <em>militaris</em> — Liquid Culture (High‑Level Guide)</h1>
+      <span class="badge">Conceptual overview • Non‑actionable</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <p class="tag">Overview</p>
+      <p>
+        This guide summarizes <strong>liquid culture (LC)</strong> concepts for <em>Cordyceps militaris</em> — what LC is, common apparatus, media options, process stages, pros/cons, and advanced strategies. It is intentionally <strong>high‑level</strong> and avoids step‑by‑step or parameterized protocols.
+      </p>
+      <div class="toc">
+        <a href="#what">What is LC?</a>
+        <a href="#apparatus">Apparatus</a>
+        <a href="#media">Media Options</a>
+        <a href="#workflow">Conceptual Workflow</a>
+        <a href="#proscons">Pros & Cons</a>
+        <a href="#advanced">Advanced Strategies</a>
+        <a href="#qa">Quality & Analytics</a>
+        <a href="#safety">Risk & Safety</a>
+        <a href="#glossary">Glossary</a>
+      </div>
+      <div class="kpi">
+        <div class="card"><div class="num">Shaken vs Static</div><div class="label">Agitation modality</div></div>
+        <div class="card"><div class="num">Batch / Fed‑Batch / Perfusion</div><div class="label">Operation modes</div></div>
+        <div class="card"><div class="num">Flasks / Bioreactors / Immobilized</div><div class="label">Culture formats</div></div>
+      </div>
+    </section>
+
+    <section id="what">
+      <h2>🔬 What is Liquid Culture?</h2>
+      <p>
+        Liquid culture grows fungal mycelium in a <strong>nutrient broth</strong>. For <em>C. militaris</em>, LC is used to generate vigorous inoculum, produce extracellular metabolites, or stage a two‑phase process (liquid → solid fruiting). Unlike solid media, LC emphasizes <strong>mass transfer</strong> (oxygen, nutrients) and <strong>hydrodynamics</strong> (shear, mixing).
+      </p>
+    </section>
+
+    <section id="apparatus">
+      <h2>🧰 Apparatus (Conceptual)</h2>
+      <div class="grid">
+        <section>
+          <h3>Vessels</h3>
+          <ul>
+            <li>Erlenmeyer flasks (standard or baffled)</li>
+            <li>Wide‑mouth jars with breathable closures</li>
+            <li>Stirred‑tank or air‑lift bioreactors</li>
+            <li>Disposable shake‑flasks / bottles (vented caps)</li>
+            <li>Immobilization carriers (PU foam, beads, loofah)</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Mixing & Gas Transfer</h3>
+          <ul>
+            <li>Orbital shakers (controlled shaking)</li>
+            <li>Magnetic stirrers & spinbars</li>
+            <li>Spargers/air stones with sterile filtration</li>
+            <li>Headspace exchange via sterile filters</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Monitoring & Control</h3>
+          <ul>
+            <li>pH and dissolved oxygen (DO) probes (bioreactor)</li>
+            <li>Temperature control jackets/incubators</li>
+            <li>Foam management (antifoam, mechanical breakers)</li>
+            <li>Sampling ports with aseptic septa</li>
+          </ul>
+        </section>
+      </div>
+      <div class="callout warn">Note: Specific operating settings (times, temperatures, speeds, volumes, set‑points) are intentionally omitted here.</div>
+    </section>
+
+    <section id="media">
+      <h2>🥣 Media Options (High‑Level)</h2>
+      <table>
+        <thead><tr><th>Media Type</th><th>Typical Carbon</th><th>Typical Nitrogen</th><th>Additives</th><th>Use Case</th></tr></thead>
+        <tbody>
+          <tr><td>Carbohydrate‑rich broth</td><td>Glucose, maltose, starch hydrolysate</td><td>Yeast extract, peptone</td><td>Mineral salts, vitamins</td><td>General mycelial biomass</td></tr>
+          <tr><td>Insect‑mimic broth</td><td>Simple sugars + soluble polysaccharides</td><td>Protein hydrolysates, amino acids</td><td>Trace Zn/Se/Fe/Mg, lipids</td><td>Bioactive metabolite orientation</td></tr>
+          <tr><td>Defined minimal broth</td><td>Single carbon source</td><td>Ammonium/nitrate + vitamins</td><td>Buffered salts</td><td>Mechanistic studies; reproducibility</td></tr>
+          <tr><td>Two‑stage regimen</td><td>Stage‑1 growth → Stage‑2 stress</td><td>Rich → limited</td><td>Light/oxygen regime change</td><td>Induce cordycepin/pigments</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="workflow">
+      <h2>🧭 Conceptual Workflow (No Parameters)</h2>
+      <ol>
+        <li><strong>Source culture</strong> → obtain a verified, contamination‑free strain on solid medium.</li>
+        <li><strong>Broth preparation</strong> → choose media category (above) matching goals; ensure sterility and suitable closures.</li>
+        <li><strong>Inoculation</strong> → transfer a small, clean inoculum from a healthy source using aseptic technique.</li>
+        <li><strong>Culture phase</strong> → maintain gentle mixing/aeration appropriate to the vessel; observe morphology (pellets vs. filaments).</li>
+        <li><strong>Condition shift (optional)</strong> → alter environment/composition conceptually to bias secondary metabolism.</li>
+        <li><strong>Harvest</strong> → separate mycelial biomass and/or collect clarified broth depending on the goal.</li>
+      </ol>
+      <div class="callout ok">Design intent: keep the process reproducible and logged (lot tracking, observations, photos), while avoiding unvalidated parameter tweaks.</div>
+    </section>
+
+    <section id="proscons">
+      <h2>⚖️ Pros & Cons of Liquid Culture</h2>
+      <div class="grid">
+        <section>
+          <h3>Pros</h3>
+          <ul>
+            <li>Rapid expansion of inoculum for downstream solid culture</li>
+            <li>Uniform exposure to nutrients; clean sampling</li>
+            <li>Potential for higher extracellular metabolite recovery</li>
+            <li>Scalable from bench flasks to bioreactors</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Cons</h3>
+          <ul>
+            <li>Sensitive to contamination; hard to visually detect early</li>
+            <li>Shear stress can alter morphology and yield</li>
+            <li>Foaming and oxygen transfer challenges</li>
+            <li>Requires additional equipment and sterility discipline</li>
+          </ul>
+        </section>
+      </div>
+    </section>
+
+    <section id="advanced">
+      <h2>🚀 Advanced Strategies (High‑Level Only)</h2>
+      <details>
+        <summary>Two‑Stage (Growth → Induction)</summary>
+        <ul>
+          <li><strong>Stage 1:</strong> Emphasize biomass and healthy morphology.</li>
+          <li><strong>Stage 2:</strong> Introduce a controlled change (e.g., nutrient limitation, light exposure conceptually) to favor cordycepin/pigmentation.</li>
+          <li><em>Rationale:</em> Decouples growth from secondary metabolite induction.</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Fed‑Batch Concepts</summary>
+        <ul>
+          <li>Begin with moderate media strength; add concentrated feed conceptually to maintain carbon while preventing by‑product accumulation.</li>
+          <li>Monitor morphology; adjust agitation/aeration strategy conceptually to steer pellets vs. filaments.</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Immobilized / Carrier‑Based LC</summary>
+        <ul>
+          <li>Use inert carriers (foam, beads, meshes) to support mycelial attachment.</li>
+          <li>Benefits include stable morphology and simplified harvest of broth metabolites.</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Bioreactor Control Themes</summary>
+        <ul>
+          <li>Closed‑loop management of pH and dissolved oxygen (no set‑points given here).</li>
+          <li>Sterile air supply with filtration; consider antifoam strategies if needed.</li>
+          <li>Data logging for comparability and regulatory traceability.</li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="qa">
+      <h2>📈 Quality & Analytics (Non‑procedural)</h2>
+      <ul>
+        <li><strong>Identity & purity:</strong> Plate checks or molecular confirmation outside the LC vessel.</li>
+        <li><strong>Biomass estimation:</strong> Non‑destructive optical methods or weighed samples post‑harvest.</li>
+        <li><strong>Metabolites:</strong> Targeted assays (e.g., nucleosides, polysaccharides) performed on clarified samples.</li>
+        <li><strong>Documentation:</strong> Batch records capturing media lots, culture origin, vessel type, and observations.</li>
+      </ul>
+    </section>
+
+    <section id="safety">
+      <h2>🛡️ Risk, Safety & Scope</h2>
+      <div class="callout bad">
+        This guide intentionally <strong>does not include step‑by‑step instructions, specific temperatures, times, volumes, agitation rates, or other protocol parameters</strong>. Providing such procedural detail for culturing biological systems is not supported here. For actionable protocols, seek formal training, institutional SOPs, and locally approved reference manuals.
+      </div>
+      <ul>
+        <li>Follow institutional biosafety guidance, wear appropriate PPE, and work within approved facilities.</li>
+        <li>Dispose of cultures and materials according to local biosafety and environmental regulations.</li>
+        <li>Vet strains for suitability and safety before use.</li>
+      </ul>
+    </section>
+
+    <section id="glossary">
+      <h2>📚 Glossary</h2>
+      <ul>
+        <li><strong>LC (Liquid Culture):</strong> Growth of mycelium in a nutrient broth.</li>
+        <li><strong>DO (Dissolved Oxygen):</strong> Amount of oxygen available in liquid phase.</li>
+        <li><strong>Fed‑Batch:</strong> Operation mode where nutrients are added during culture.</li>
+        <li><strong>Immobilization:</strong> Attachment of biomass to an inert support within the liquid.</li>
+        <li><strong>Pellet vs. Filamentous Morphology:</strong> Macroscopic growth forms influenced by hydrodynamics and nutrition.</li>
+      </ul>
+    </section>
+
+    <div class="float-actions">
+      <button class="btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
+      <button class="btn" onclick="copyLink()">🔗 Copy Section Link</button>
+    </div>
+  </main>
+
+  <footer>
+    <small>High‑level overview prepared for conceptual understanding of <em>Cordyceps militaris</em> liquid culture. For experimental work, consult accredited training and approved SOPs.</small>
+  </footer>
+
+  <script>
+    function copyLink(){
+      const sel = document.getSelection();
+      if(!sel || sel.rangeCount===0){ navigator.clipboard.writeText(location.href); return; }
+      const el = sel.anchorNode && sel.anchorNode.parentElement ? sel.anchorNode.parentElement.closest('section,[id]') : null;
+      const id = el && el.id ? el.id : '';
+      const url = id ? location.origin + location.pathname + '#' + id : location.href;
+      navigator.clipboard.writeText(url);
+      alert('Link copied: ' + url);
+    }
+  </script>
+</body>
+</html>
